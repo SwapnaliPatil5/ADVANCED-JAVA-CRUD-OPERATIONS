@@ -3,15 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package menudriven;
-import java. util. Scanner;
+
+import java.util.Scanner;
 import java.sql.ResultSet;
+
 /**
  *
  * @author swapn
  */
 public class MenuDriven {
-     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         SqlUtilForMenuDriven.connectDb();
 
         while (true) {
@@ -22,20 +25,26 @@ public class MenuDriven {
             System.out.println("4. Delete");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
-               String qry;
+            int choice = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            String qry;
             switch (choice) {
                 case 1:
-                    qry = "insert into products values(6,'earphones',5200)";
+                    System.out.println("Enter id");
+                    int id1 = sc.nextInt();
+                    System.out.println("Product Name");
+                    String productName = sc.next();
+                    System.out.println("Enter Price");
+                    float price1 = sc.nextFloat();
+                    qry = "insert into products values("+id1+",'"+productName+"',"+price1+")";
                     int insertResult = SqlUtilForMenuDriven.insert(qry);
                     System.out.println("Rows affected: " + insertResult);
                     break;
 
                 case 2:
-                    
+
                     try {
-                         qry = "select * from products";
+                        qry = "select * from products";
                         ResultSet rs = SqlUtilForMenuDriven.fetch(qry);
                         while (rs.next()) {
                             int id = rs.getInt("id");
@@ -49,20 +58,27 @@ public class MenuDriven {
                     break;
 
                 case 3:
-                   qry = "UPDATE products SET price = 6000 WHERE id = 6";
+                    System.out.println("Enter id");
+                    int id2 = sc.nextInt();
+                   
+                    System.out.println("Enter Price");
+                    float price2 = sc.nextFloat();
+                    qry = "UPDATE products SET price = '"+price2+"' WHERE id = '"+id2+"'";
                     int updateResult = SqlUtilForMenuDriven.insert(qry);
                     System.out.println("Rows affected: " + updateResult);
                     break;
 
                 case 4:
-                   qry = "DELETE FROM products WHERE id = 6";
+                    System.out.println("Enter id");
+                    int id3 = sc.nextInt();
+                    qry = "DELETE FROM products WHERE id = '"+id3+"'";
                     int deleteResult = SqlUtilForMenuDriven.delete(qry);
                     System.out.println("Rows affected: " + deleteResult);
                     break;
 
                 case 5:
                     SqlUtilForMenuDriven.close();
-                    scanner.close();
+                    sc.close();
                     System.exit(0);
                     break;
 
