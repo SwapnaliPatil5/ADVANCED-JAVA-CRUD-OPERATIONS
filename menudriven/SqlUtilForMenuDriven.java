@@ -34,7 +34,7 @@ public class SqlUtilForMenuDriven {
 
     static int insert(String qry) {
         int result = -1;
-        if (qry != null && !qry.isEmpty()) {
+        if (qry!="") {
             try {
                 result = stmt.executeUpdate(qry);
             } catch (Exception e) {
@@ -46,7 +46,7 @@ public class SqlUtilForMenuDriven {
 
     static ResultSet fetch(String qry) {
         ResultSet rs = null;
-        if (qry != null && !qry.isEmpty()) {
+        if (qry!="") {
             try {
                 rs = stmt.executeQuery(qry);
             } catch (Exception e) {
@@ -58,7 +58,7 @@ public class SqlUtilForMenuDriven {
 
     static int update(String qry) {
         int result = -1;
-        if (qry != null && !qry.isEmpty()) {
+        if (qry!="") {
             try {
                 result = stmt.executeUpdate(qry);
             } catch (Exception e) {
@@ -70,7 +70,7 @@ public class SqlUtilForMenuDriven {
 
     static int delete(String qry) {
         int result = -1;
-        if (qry != null && !qry.isEmpty()) {
+        if (qry!="") {
             try {
                 result = stmt.executeUpdate(qry);
             } catch (Exception e) {
